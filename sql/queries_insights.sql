@@ -1,6 +1,10 @@
-QUERY 1 — Taxa de churn por faixa de saldo
-Objetivo: Identificar quais faixas de saldo
-concentram maior risco de cancelamento
+-- Queries de insight do Projeto Sentinela
+-- Tabela: clientes (carregada a partir de data/clientes_banco.csv)
+-- Testadas em SQLite (o notebook carrega o CSV em um banco em memória)
+
+-- QUERY 1 — Taxa de churn por faixa de saldo
+-- Objetivo: identificar quais faixas de saldo
+-- concentram maior risco de cancelamento
 
 SELECT
     CASE
@@ -17,9 +21,9 @@ GROUP BY faixa_saldo
 ORDER BY taxa_churn_pct DESC;
 
 
-QUERY 2 — Perfil medio: ficou vs cancelou
-Objetivo: Comparar caracteristicas dos grupos
-para identificar padroes de comportamento
+-- QUERY 2 — Perfil médio: ficou x cancelou
+-- Objetivo: comparar características dos grupos
+-- para identificar padrões de comportamento
 
 SELECT
     CASE WHEN churn = 1
@@ -36,9 +40,9 @@ FROM clientes
 GROUP BY churn;
 
 
-QUERY 3 — Top 10 clientes em alto risco
-Objetivo: Identificar clientes prioritarios
-para acao imediata de retencao
+-- QUERY 3 — Top 10 clientes em alto risco
+-- Objetivo: identificar clientes prioritários
+-- para ação imediata de retenção
 
 SELECT
     cliente_id,
